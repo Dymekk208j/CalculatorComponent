@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CalculatorComponent
+namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class MainWindow : Window
     {
-        public UserControl1()
+        public MainWindow()
         {
-            InitializeComponent();
+         //   InitializeComponent();
+        }
+
+        private void UserControl1_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
