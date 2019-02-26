@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <calculatorComponent:Calculator HorizontalAlignment="Left" Height="361" Margin="144,33,0,0" VerticalAlignment="Top" Width="332"/>
+        <calculatorComponent:Calculator Name="Calculator" HorizontalAlignment="Left" Height="361" Margin="144,33,0,0" VerticalAlignment="Top" Width="332" ButtonsBackgroundColor="Blue" ButtonsFontColor="REd" ButtonsFontSize="16" ResultFontSize="16" ResultFontColor="DarkGreen"/>
     </Grid>
 </Window>

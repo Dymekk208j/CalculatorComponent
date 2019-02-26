@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media;
 
 namespace CalculatorComponent
 {
@@ -18,7 +19,7 @@ namespace CalculatorComponent
             [Description("/")]
             Div,
             [Description("√")]
-            Sqr
+            Sqrt
         }
 
         private string _txtOperation = "";
@@ -124,9 +125,9 @@ namespace CalculatorComponent
             UpdateTextControls();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Sqrt(object sender, RoutedEventArgs e)
         {
-
+            Operation(OperationType.Sqrt);
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
@@ -145,6 +146,12 @@ namespace CalculatorComponent
 
             if (_selectedOperation != null)
             {
+                if (_selectedOperation == OperationType.Sqrt)
+                {
+                    _txtOperation = GetEnumDescription(_selectedOperation) + _txtOperation;
+
+                }
+                else
                 _txtOperation += ' ' + GetEnumDescription(_selectedOperation) + ' ';
             }
 
@@ -201,15 +208,17 @@ namespace CalculatorComponent
                
             }
 
-            if (TxtNumber.EndsWith(",")) TxtNumber += "0";
+            if (TxtNumber != null && TxtNumber.EndsWith(",")) TxtNumber += "0";
 
             if (_selectedOperation == null)
             {
-                _firstNumber = double.Parse(TxtNumber);
+                _firstNumber = double.Parse(TxtNumber ?? throw new InvalidOperationException());
                 TxtNumber = "";
             }
-
             _selectedOperation = type;
+
+            if (_selectedOperation == OperationType.Sqrt) Result = Math.Sqrt(_firstNumber.GetValueOrDefault());
+
 
             Update_Operation_Text();
             UpdateTextControls();
@@ -233,7 +242,7 @@ namespace CalculatorComponent
                 case OperationType.Multi:
                     Result = _firstNumber * _secondNumber;
                     break;
-                case OperationType.Sqr:
+                case OperationType.Sqrt:
                     break;
                 case OperationType.Sub:
                     Result = _firstNumber - _secondNumber;
@@ -260,6 +269,82 @@ namespace CalculatorComponent
 
             Update_Operation_Text();
             UpdateTextControls();
+
+            
         }
+
+        public double ResultFontSize
+        {
+            get { return (double)GetValue(ResultFontSizeProperty); }
+            set { SetValue(ResultFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ResultFontSizeProperty =
+            DependencyProperty.Register("ResultFontSize", typeof(double), typeof(Calculator), new PropertyMetadata(12.0));
+
+
+
+        public Brush ResultFontColor
+        {
+            get { return (Brush)GetValue(ResultFontColorProperty); }
+            set { SetValue(ResultFontColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ResultFontColorProperty =
+            DependencyProperty.Register("ResultFontColor", typeof(Brush), typeof(Calculator), new PropertyMetadata(Brushes.Black));
+
+
+
+        public double ButtonsFontSize
+        {
+            get { return (double)GetValue(ButtonsFontSizeProperty); }
+            set { SetValue(ButtonsFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonsFontSizeProperty =
+            DependencyProperty.Register("ButtonsFontSize", typeof(double), typeof(Calculator), new PropertyMetadata(12.0));
+
+
+
+        public Brush ButtonsFontColor
+        {
+            get { return (Brush)GetValue(ButtonsFontColorProperty); }
+            set { SetValue(ButtonsFontColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonsFontColorProperty =
+            DependencyProperty.Register("ButtonsFontColor", typeof(Brush), typeof(Calculator), new PropertyMetadata(Brushes.Black));
+
+
+
+        public Brush ResultBackgroundColor
+        {
+            get { return (Brush)GetValue(ResultBackgroundColorProperty); }
+            set { SetValue(ResultBackgroundColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ResultBackgroundColorProperty =
+            DependencyProperty.Register("ResultBackgroundColor", typeof(Brush), typeof(Calculator), new PropertyMetadata(Brushes.White));
+
+
+        public Brush ButtonsBackgroundColor
+        {
+            get { return (Brush)GetValue(ButtonsBackgroundColorProperty); }
+            set { SetValue(ButtonsBackgroundColorProperty, value); }
+        }
+        public static readonly DependencyProperty ButtonsBackgroundColorProperty =
+            DependencyProperty.Register("ButtonsBackgroundColor", typeof(Brush), typeof(Calculator), new PropertyMetadata(Brushes.Gray));
+        
+     
+
+        public Brush BackgroundColor
+        {
+            get { return (Brush)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty BackgroundColorProperty =
+            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(Calculator), null);
+
     }
 }

@@ -4,31 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             Name="CalculatorWindow"
              d:DesignHeight="350" Width="245">
-    <Grid>
-        <Viewbox Margin="10,10,10,5" Stretch="Fill">
+    <Grid Name="MyGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="151*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Margin="10,10,10,5" Stretch="Fill" Grid.ColumnSpan="2">
             <Grid Height="335" Width="225">
-                <Button Content="0" Margin="59,287,117,0" Click="Button_Click_0"/>
-                <Button Content="1" Margin="0,228,176,58" Click="Button_Click_1"/>
-                <Button Content="2" Margin="59,228,117,58" Click="Button_Click_2"/>
-                <Button Content="3" Margin="117,228,59,58" Click="Button_Click_3"/>
-                <Button Content="4" Margin="0,170,176,116" Click="Button_Click_4"/>
-                <Button Content="5" Margin="59,170,117,116" Click="Button_Click_5"/>
-                <Button Content="6" Margin="117,170,59,116" Click="Button_Click_6"/>
-                <Button Content="7" Margin="0,112,176,174" Click="Button_Click_7"/>
-                <Button Content="8" Margin="59,112,117,174" Click="Button_Click_8"/>
-                <Button Content="9" Margin="117,112,59,174" Click="Button_Click_9"/>
-                <Button Content="X" Margin="176,112,0,174" Click="Button_Click_Multi"/>
-                <Button Content="-" Margin="176,170,0,116" Click="Button_Click_Sub"/>
-                <Button Content="+" Margin="176,228,0,58" Click="Button_Click_Add"/>
-                <Button Content="+-" Margin="0,287,176,0" Click="Button_Click_Sign"/>
-                <Button Content="," Margin="117,287,59,0" Click="Button_Click_Dot"/>
-                <Button Content="=" Margin="176,287,0,0" Click="Button_Click_Result"/>
-                <Button Content="CE" Margin="0,54,176,232" Click="Button_Click_Clear"/>
-                <Button Content="C" Margin="59,54,117,232" Click="Button_Click_Remove_Number"/>
-                <Button Content="√" Margin="117,54,59,232" Click="Button_Click"/>
-                <Button Content="/" Margin="176,54,0,232" Click="Button_Click_Div"/>
-                <TextBox x:Name="TextBoxResult" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="12" TextAlignment="Right" IsReadOnly="true" Margin="0,22,0,0"/>
+                <Button Name="btn0" Content="0" Margin="59,291,117,0" Click="Button_Click_0" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="1" Margin="0,238,176,53" Click="Button_Click_1" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="2" Margin="59,238,117,53" Click="Button_Click_2" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="3" Margin="117,238,59,53" Click="Button_Click_3" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="4" Margin="0,185,176,106" Click="Button_Click_4" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="5" Margin="59,185,117,106" Click="Button_Click_5" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="6" Margin="117,185,59,106" Click="Button_Click_6" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="7" Margin="0,132,176,159" Click="Button_Click_7" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="8" Margin="59,132,117,159" Click="Button_Click_8" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="9" Margin="117,132,59,159" Click="Button_Click_9" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="X" Margin="176,132,0,159" Click="Button_Click_Multi" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="-" Margin="176,185,0,106" Click="Button_Click_Sub" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="+" Margin="176,238,0,53" Click="Button_Click_Add" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="+-" Margin="0,291,176,0" Click="Button_Click_Sign" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="," Margin="117,291,59,0" Click="Button_Click_Dot" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="=" Margin="176,291,0,0" Click="Button_Click_Result" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="CE" Margin="0,79,176,211" Click="Button_Click_Clear" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="C" Margin="59,79,117,211" Click="Button_Click_Remove_Number" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="√" Margin="117,79,59,211" Click="Button_Click_Sqrt" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <Button Content="/" Margin="176,79,0,211" Click="Button_Click_Div" Background="{Binding ButtonsBackgroundColor, ElementName=CalculatorWindow}" Foreground="{Binding ButtonsFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ButtonsFontSize, ElementName=CalculatorWindow }"/>
+                <TextBox x:Name="TextBoxResult" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="41" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TextAlignment="Right" IsReadOnly="true" Margin="0,22,0,0" Background="{Binding ResultBackgroundColor, ElementName=CalculatorWindow}"  Foreground="{Binding ResultFontColor, ElementName=CalculatorWindow }" FontSize="{Binding ResultFontSize, ElementName=CalculatorWindow }"/>
                 <Label Name="LblOperation" Content="" HorizontalAlignment="Right"  VerticalContentAlignment="Center" VerticalAlignment="Top" Width="225" Margin="0,-4,0,0"/>
             </Grid>
         </Viewbox>
