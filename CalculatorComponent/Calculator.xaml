@@ -18,7 +18,7 @@
                 <Button Content="7" Margin="0,112,176,174" Click="Button_Click_7"/>
                 <Button Content="8" Margin="59,112,117,174" Click="Button_Click_8"/>
                 <Button Content="9" Margin="117,112,59,174" Click="Button_Click_9"/>
-                <Button Content="X" Margin="176,112,0,174" Click="Button_Click_Mult"/>
+                <Button Content="X" Margin="176,112,0,174" Click="Button_Click_Multi"/>
                 <Button Content="-" Margin="176,170,0,116" Click="Button_Click_Sub"/>
                 <Button Content="+" Margin="176,228,0,58" Click="Button_Click_Add"/>
                 <Button Content="+-" Margin="0,287,176,0" Click="Button_Click_Sign"/>

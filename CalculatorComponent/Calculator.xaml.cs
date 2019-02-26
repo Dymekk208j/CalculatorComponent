@@ -2,14 +2,10 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace CalculatorComponent
 {
-    /// <summary>
-    /// Interaction logic for Calculator.xaml
-    /// </summary>
-    public partial class Calculator : UserControl
+    public partial class Calculator
     {
         private enum OperationType
         {
@@ -18,14 +14,14 @@ namespace CalculatorComponent
             [Description("-")]
             Sub,
             [Description("*")]
-            Mult,
+            Multi,
             [Description("/")]
             Div,
             [Description("√")]
             Sqr
         }
 
-        private string TxtOperation = "";
+        private string _txtOperation = "";
 
         private string TxtNumber { get; set; }
 
@@ -140,29 +136,29 @@ namespace CalculatorComponent
 
         private void Update_Operation_Text()
         {
-            TxtOperation = "";
+            _txtOperation = "";
 
             if (_firstNumber != null)
             {
-                TxtOperation += _firstNumber.ToString();
+                _txtOperation += _firstNumber.ToString();
             }
 
             if (_selectedOperation != null)
             {
-                TxtOperation += ' ' + GetEnumDescription(_selectedOperation) + ' ';
+                _txtOperation += ' ' + GetEnumDescription(_selectedOperation) + ' ';
             }
 
             if (_secondNumber != null)
             {
-                TxtOperation += _secondNumber < 0 ? $"({_secondNumber.ToString()})" : _secondNumber.ToString(); 
+                _txtOperation += _secondNumber < 0 ? $"({_secondNumber.ToString()})" : _secondNumber.ToString(); 
             }
 
             if (Result != null)
             {
-                TxtOperation += " = " + Result;
+                _txtOperation += " = " + Result;
             }
 
-            LblOperation.Content = TxtOperation;
+            LblOperation.Content = _txtOperation;
         }
         
         private static string GetEnumDescription(Enum value)
@@ -182,9 +178,9 @@ namespace CalculatorComponent
             Operation(OperationType.Sub);
         }
 
-        private void Button_Click_Mult(object sender, RoutedEventArgs e)
+        private void Button_Click_Multi(object sender, RoutedEventArgs e)
         {
-            Operation(OperationType.Mult);
+            Operation(OperationType.Multi);
         }
 
         private void Button_Click_Div(object sender, RoutedEventArgs e)
@@ -234,7 +230,7 @@ namespace CalculatorComponent
                 case OperationType.Div:
                     Result = _firstNumber / _secondNumber;
                     break;
-                case OperationType.Mult:
+                case OperationType.Multi:
                     Result = _firstNumber * _secondNumber;
                     break;
                 case OperationType.Sqr:
